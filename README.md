@@ -1,6 +1,6 @@
-# cool-accounts-cyhy #
+# cool-accounts-cyhy-tf-root #
 
-[![GitHub Build Status](https://github.com/cisagov/cool-accounts-cyhy/workflows/build/badge.svg)](https://github.com/cisagov/cool-accounts-cyhy/actions)
+[![GitHub Build Status](https://github.com/cisagov/cool-accounts-cyhy-tf-root/workflows/build/badge.svg)](https://github.com/cisagov/cool-accounts-cyhy-tf-root/actions)
 
 This project contains Terraform code to perform the initial configuration of a
 COOL Cyber Hygiene (CyHy) account. This Terraform code creates and configures
@@ -114,9 +114,11 @@ changes by simply running `terraform apply -var-file=<workspace_name>.tfvars`.
 
 | Name | Type |
 |------|------|
+| [aws_iam_policy.provisioncyhyroot_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provisionlambdabucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provisionssmsessionmanager_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.read_cool_lambda_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role_policy_attachment.provisioncyhyroot_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.provisionlambdabucket_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.provisionssmsessionmanager_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.read_cool_lambda_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
@@ -126,6 +128,7 @@ changes by simply running `terraform apply -var-file=<workspace_name>.tfvars`.
 | [aws_s3_bucket_server_side_encryption_configuration.lambda_artifacts](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
 | [aws_s3_bucket_versioning.lambda_artifacts](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
 | [aws_caller_identity.cyhy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.provisioncyhyroot_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.provisionlambdabucket_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.provisionssmsessionmanager_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.read_cool_lambda_bucket_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -142,6 +145,8 @@ changes by simply running `terraform apply -var-file=<workspace_name>.tfvars`.
 | disable\_inactive\_users\_lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Cyber Hygiene account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Cyber Hygiene account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Cyber Hygiene account. | `string` | `"ProvisionAccount"` | no |
+| provisioncyhyroot\_policy\_description | The description to associate with the IAM policy that allows sufficient permissions to provision all AWS resources required by cisagov/cyhy-tf-root. | `string` | `"Allows sufficient permissions to provision all AWS resources required by cisagov/cyhy-tf-root."` | no |
+| provisioncyhyroot\_policy\_name | The name to assign the IAM policy that allows sufficient permissions to provision all AWS resources required by cisagov/cyhy-tf-root. | `string` | `"ProvisionCyHyRoot"` | no |
 | provisionlambdabucket\_policy\_description | The description to associate with the IAM policy that allows sufficient permissions to provision the Lambda deployment artifacts S3 bucket in the Cyber Hygiene account. | `string` | `"Allows sufficient permissions to provision the Lambda deployment artifacts S3 bucket in the Cyber Hygiene account."` | no |
 | provisionlambdabucket\_policy\_name | The name to assign the IAM policy that allows sufficient permissions to provision the Lambda deployment artifacts S3 bucket in the Cyber Hygiene account. | `string` | `"ProvisionLambdaArtifactsBucket"` | no |
 | provisionssmsessionmanager\_policy\_description | The description to associate with the IAM policy that allows sufficient permissions to provision the SSM Document resource and set up SSM session logging in the Cyber Hygiene account. | `string` | `"Allows sufficient permissions to provision the SSM Document resource and set up SSM session logging in the Cyber Hygiene account."` | no |
