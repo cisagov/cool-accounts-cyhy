@@ -93,6 +93,16 @@ data "aws_iam_policy_document" "provisioncyhyroot_policy_doc" {
 
   statement {
     actions = [
+      "lambda:InvokeFunction",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
+  statement {
+    actions = [
       "logs:ListTagsForResource",
     ]
 
