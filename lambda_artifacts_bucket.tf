@@ -44,3 +44,13 @@ resource "aws_s3_bucket_ownership_controls" "lambda_artifacts" {
     object_ownership = "BucketOwnerEnforced"
   }
 }
+
+# Enable versioning on the bucket.  This allows Terraform to determine when a
+# new version of the Lambda deployment package is uploaded and update the Lambda
+# function accordingly.
+resource "aws_s3_bucket_versioning" "lambda_artifacts" {
+  bucket = aws_s3_bucket.lambda_artifacts.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
