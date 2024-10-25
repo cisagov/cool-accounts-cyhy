@@ -46,6 +46,7 @@ data "aws_iam_policy_document" "provisioncyhyroot_policy_doc" {
       "ec2:DeleteRouteTable",
       "ec2:DeleteSecurityGroup",
       "ec2:DeleteSubnet",
+      "ec2:DeleteTags",
       "ec2:DeleteVpc",
       "ec2:Describe*",
       "ec2:DetachInternetGateway",
