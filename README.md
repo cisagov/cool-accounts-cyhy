@@ -89,7 +89,7 @@ changes by simply running `terraform apply -var-file=<workspace_name>.tfvars`.
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.0 |
+| terraform | ~> 1.1 |
 | aws | ~> 4.9 |
 
 ## Providers ##
