@@ -50,6 +50,20 @@ variable "provisionaccount_role_name" {
   type        = string
 }
 
+variable "provisioncyhyroot_policy_description" {
+  default     = "Allows sufficient permissions to provision all AWS resources required by cisagov/cyhy-tf-root."
+  description = "The description to associate with the IAM policy that allows sufficient permissions to provision all AWS resources required by cisagov/cyhy-tf-root."
+  nullable    = false
+  type        = string
+}
+
+variable "provisioncyhyroot_policy_name" {
+  default     = "ProvisionCyHyRoot"
+  description = "The name to assign the IAM policy that allows sufficient permissions to provision all AWS resources required by cisagov/cyhy-tf-root."
+  nullable    = false
+  type        = string
+}
+
 variable "provisionlambdabucket_policy_description" {
   default     = "Allows sufficient permissions to provision the Lambda deployment artifacts S3 bucket in the Cyber Hygiene account."
   description = "The description to associate with the IAM policy that allows sufficient permissions to provision the Lambda deployment artifacts S3 bucket in the Cyber Hygiene account."
